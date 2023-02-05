@@ -21,6 +21,7 @@ const PORT = process.env.PORT || 3000;
 //In next js, server and app both run on the same port, i.e. port 3000
 // we don't need two separate ports for frontend and backend
 
+
 connectionDB();
 const corsOpts = {
   origin: '*',
@@ -40,12 +41,11 @@ app.use(express.json()); //for getting req.body in a json format and for parsing
 
 
 nextApp.prepare().then(()=>{
-    //Now here we are handling requests & responses
+    //Now here we are setting up our api calls
   
-    
     app.use("/api/signup",require('./pages/api/signup'));
-
-
+    
+   
 
 
     server.listen(PORT,(err)=>{
