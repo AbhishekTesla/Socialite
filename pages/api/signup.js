@@ -53,7 +53,7 @@ router.post('/',async(req,res)=>{
         youtube,
         twitter,
         instagram,
-    } = req.body;
+    } = req.body.user;
 
   if(!isEmail(email)) return res.status(401).send("Invalid Email");  //check if the string is an email.
    
@@ -85,7 +85,7 @@ router.post('/',async(req,res)=>{
 
     let profileFields={};
     profileFields.user = user._id;//here we're referencing the id of the new user to the 'user' property of the ProfileModel (which is of the type user ID)
-    
+    profileFields.bio = bio;
     profileFields.social={};
 
     if(facebook) profileFields.social.facebook=facebook;
@@ -119,7 +119,7 @@ const payload = {userId:user._id};
 jwt.sign(
     payload,
     process.env.JWT_SECRET,  // it is a secrete key
-    { expiresIn:"2d"},
+    { expiresIn:"1m"},
     (err,token)=>{
         if(err) throw err;
         return res.status(200).json(token);

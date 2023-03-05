@@ -44,9 +44,9 @@ nextApp.prepare().then(()=>{
     //Now here we are setting up our api calls
   
     app.use("/api/signup",require('./pages/api/signup'));
+    app.use("/api/auth",require("./pages/api/auth"));
     
-   
-
+  
 
     server.listen(PORT,(err)=>{
         if(err) throw err;

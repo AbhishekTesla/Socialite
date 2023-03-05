@@ -2,12 +2,16 @@
 
 const jwt = require('jsonwebtoken')
 
+
 function authMiddleware(req,res,next){
-try{
+
+console.log(req.headers["authorization"].split(" ")[1]);
     if(!req.headers.authorization){
         return res.status(401).send("Unauthorized");
     }
-    const {userId} = jwt.verify(req.headers.authorization,process.env.JWT_SECRET);  //Returns the payload decoded if the signature is valid and optional expiration, audience, or issuer are valid. If not, it will throw the error.
+    
+try{
+    const {userId} = jwt.verify(req.headers["authorization"].split(" ")[1],process.env.JWT_SECRET);  //Returns the payload decoded if the signature is valid and optional expiration, audience, or issuer are valid. If not, it will throw the error.
 
     req.userId = userId; 
     next();
