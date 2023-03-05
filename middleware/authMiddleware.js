@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 
 function authMiddleware(req,res,next){
 
-console.log(req.headers["authorization"].split(" ")[1]);
     if(!req.headers.authorization){
         return res.status(401).send("Unauthorized");
     }

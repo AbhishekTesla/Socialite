@@ -45,6 +45,7 @@ nextApp.prepare().then(()=>{
   
     app.use("/api/signup",require('./pages/api/signup'));
     app.use("/api/auth",require("./pages/api/auth"));
+    app.use("/api/profile",require("./pages/api/profile"))
     
   
 

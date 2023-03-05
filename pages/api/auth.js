@@ -14,7 +14,7 @@ const authMiddleware = require('../../middleware/authMiddleware');
 router.get('/',authMiddleware,async(req,res)=>{
   
     const {userId} = req;
-   console.log(userId)
+    console.log(userId)
 
     try{
       const user = await UserModel.findById(userId);
