@@ -48,6 +48,7 @@ nextApp.prepare().then(()=>{
     app.use("/api/profile",require("./pages/api/profile"));
     app.use("/api/notification",require("./pages/api/notification"));
     app.use("/api/search",require("./pages/api/search"));
+    app.use("/api/chats",require("./pages/api/chats"));
     
   
 
