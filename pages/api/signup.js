@@ -43,6 +43,7 @@ router.get('/:username',async(req,res)=>{
 
 
 router.post('/',async(req,res)=>{
+  console.log(req.body)
     const {
         name,
         email,
@@ -53,7 +54,7 @@ router.post('/',async(req,res)=>{
         youtube,
         twitter,
         instagram,
-    } = req.body.user;
+    } = req.body;
 
   if(!isEmail(email)) return res.status(401).send("Invalid Email");  //check if the string is an email.
    
@@ -119,7 +120,7 @@ const payload = {userId:user._id};
 jwt.sign(
     payload,
     process.env.JWT_SECRET,  // it is a secrete key
-    { expiresIn:"1m"},
+    { expiresIn:"2d"},
     (err,token)=>{
         if(err) throw err;
         return res.status(200).json(token);

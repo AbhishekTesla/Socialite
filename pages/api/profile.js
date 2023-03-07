@@ -258,6 +258,7 @@ router.post("/updatepictures",authmiddleware,async(req,res)=>{
 //Update Password 
 
 router.post("/settings/password",authmiddleware,async(req,res)=>{
+    console.log(req.body)
     try{
         const {currentPassword,newPassword} = req.body;
 
@@ -265,7 +266,7 @@ router.post("/settings/password",authmiddleware,async(req,res)=>{
             return res.status(401).send("Password must be atleast 6 char")
         }
 
-        const user = await (await UserModel.findById(req.userId)).select("+password");
+        const user = await UserModel.findById(req.userId).select("+password");
 
         const isPassword = await bcrypt.compare(currentPassword,user.password)
         if(!isPassword){
@@ -280,7 +281,7 @@ router.post("/settings/password",authmiddleware,async(req,res)=>{
     }
     catch(err){
         console.log(err);
-        return res.status(500).send("Server error")
+        return res.status(500).send("Server error !!")
     }
 })
 
@@ -322,8 +323,6 @@ router.get("/home/youMayLikeToFollow",authmiddleware,async(req,res)=>{
         return res.status(500).send("Server error");
     }
 })
-
-
 
 
 module.exports = router;
