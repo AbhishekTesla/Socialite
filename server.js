@@ -49,7 +49,7 @@ nextApp.prepare().then(()=>{
     app.use("/api/notification",require("./pages/api/notification"));
     app.use("/api/search",require("./pages/api/search"));
     app.use("/api/chats",require("./pages/api/chats"));
-    
+    app.use("/api/post",require("./pages/api/posts"));
   
 
     server.listen(PORT,(err)=>{
