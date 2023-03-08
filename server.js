@@ -50,6 +50,9 @@ nextApp.prepare().then(()=>{
     app.use("/api/search",require("./pages/api/search"));
     app.use("/api/chats",require("./pages/api/chats"));
     app.use("/api/post",require("./pages/api/posts"));
+
+    // If there is no any above api calls hit then it will handled by handle function 
+    app.all("*",(req,res) => handle(req,res));
   
 
     server.listen(PORT,(err)=>{
