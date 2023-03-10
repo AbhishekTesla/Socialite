@@ -9,6 +9,7 @@ export const registerUser = async(
     profilePicUrl,
     setError,
     setLoading
+    
 )=>{
  
     try{
